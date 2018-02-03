@@ -1,3 +1,110 @@
+# Table of Contents
+- [Angular 2 Getting Started](#angular-2-getting-started)
+    - [what is angular?](#what-is-angular)
+    - [why angular?2](#why-angular2)
+    - [why a new angular?](#why-a-new-angular)
+    - [anatomy of an angular application](#anatomy-of-an-angular-application)
+    - [component](#component)
+    - [ES2015 modules](#es2015-modules)
+    - [Angular modules](#angular-modules)
+    - [ES Modules vs Angular Modules](#es-modules-vs-angular-modules)
+    - [ES Modules (bout code files)](#es-modules-bout-code-files)
+    - [Angular Modules (about angular application)](#angular-modules-about-angular-application)
+    - [What is a component?](#what-is-a-component)
+    - [template](#template)
+    - [class](#class)
+    - [metadata](#metadata)
+    - [decorator](#decorator)
+    - [Angular Is Modular](#angular-is-modular)
+    - [Bootstrapping Our App Component](#bootstrapping-our-app-component)
+    - [Single Page Application (SPA)](#single-page-application-spa)
+    - [Hosting the Application](#hosting-the-application)
+    - [Binding](#binding)
+    - [Interpolation](#interpolation)
+    - [Directive](#directive)
+    - [Structural Directives](#structural-directives)
+    - [*ngIf: If logic](#ngif-if-logic)
+    - [*ngFor](#ngfor)
+    - [es2015 for loops](#es2015-for-loops)
+    - [for...of](#forof)
+    - [for...in](#forin)
+    - [Components and DOM](#components-and-dom)
+    - [Property Binding](#property-binding)
+    - [Event Binding](#event-binding)
+    - [Two-way Binding](#two-way-binding)
+    - [pipes](#pipes)
+    - [built-in pipes](#built-in-pipes)
+- [Interface](#interface)
+- [Component Lifecycle](#component-lifecycle)
+    - [Component Lifecycle Hooks](#component-lifecycle-hooks)
+    - [Building a Custom Pipe](#building-a-custom-pipe)
+- [Filtering Data](#filtering-data)
+- [Building Nested Components](#building-nested-components)
+    - [What Makes a Component Nest-able?](#what-makes-a-component-nest-able)
+    - [Passing Data to a Nested Component (@Input)](#passing-data-to-a-nested-component-input)
+    - [Raising an Event (@Output)](#raising-an-event-output)
+- [Services and Dependency Injection](#services-and-dependency-injection)
+    - [Service](#service)
+    - [How Does It Work?](#how-does-it-work)
+    - [Dependency Injection](#dependency-injection)
+    - [Building a Service](#building-a-service)
+    - [Registering a Service](#registering-a-service)
+        - [Register a provider](#register-a-provider)
+        - [Define in component OR Angular module metadata](#define-in-component-or-angular-module-metadata)
+        - [Registered in component:](#registered-in-component)
+        - [Registered in Angular module:](#registered-in-angular-module)
+        - [Injecting the Service](#injecting-the-service)
+- [Retrieving Data Using Http](#retrieving-data-using-http)
+    - [Observables and Reactive Extensions](#observables-and-reactive-extensions)
+    - [Observable Operators](#observable-operators)
+    - [Promise vs Observable](#promise-vs-observable)
+- [Sending an Http Request](#sending-an-http-request)
+- [Exception Handling](#exception-handling)
+- [Subscribing to an Observable](#subscribing-to-an-observable)
+- [Http Checklist](#http-checklist)
+- [Angular CLI](#angular-cli)
+    - [Safe Navigation Operator (?)](#safe-navigation-operator)
+- [How Routing Works](#how-routing-works)
+    - [Configuring Routes](#configuring-routes)
+    - [Navigatin the Application Routes](#navigatin-the-application-routes)
+    - [Tying Routes to Actions](#tying-routes-to-actions)
+    - [Placing the Views](#placing-the-views)
+        - [Nest-able components](#nest-able-components)
+        - [Routed components](#routed-components)
+- [Navigation and Routing Additional Techniques](#navigation-and-routing-additional-techniques)
+    - [Passing Parameters to a Route](#passing-parameters-to-a-route)
+    - [Reading Parameters from a Route](#reading-parameters-from-a-route)
+    - [Activating a Route with Code](#activating-a-route-with-code)
+    - [Protecting Routes with Guards](#protecting-routes-with-guards)
+    - [Building a Guard](#building-a-guard)
+- [Angular Modules](#angular-modules)
+    - [What is an Angular Module?](#what-is-an-angular-module)
+    - [Bootstrap Array](#bootstrap-array)
+    - [Declaration Array](#declaration-array)
+    - [Exports Array](#exports-array)
+    - [Imports Array](#imports-array)
+    - [Providers Array](#providers-array)
+    - [Creating a new Feature Module using NG CLI](#creating-a-new-feature-module-using-ng-cli)
+    - [Router differences for Root Module vs Feature Modules](#router-differences-for-root-module-vs-feature-modules)
+    - [Defining a Shared Module](#defining-a-shared-module)
+    - [Revisiting App Module](#revisiting-app-module)
+    - [Module Structure](#module-structure)
+    - [NgModule Metadata](#ngmodule-metadata)
+- [Building, Testing, and Deploying with the CLI](#building-testing-and-deploying-with-the-cli)
+    - [What is the Angular CLI?](#what-is-the-angular-cli)
+- [Angular CLI Review](#angular-cli-review)
+    - [ng generate](#ng-generate)
+- [Review](#review)
+    - [What Is a Component?](#what-is-a-component)
+        - [Where Do We Put the Html? (for the user interface)](#where-do-we-put-the-html-for-the-user-interface)
+    - [When Should We Use Data Binding?](#when-should-we-use-data-binding)
+    - [Why Do We Need a Service?](#why-do-we-need-a-service)
+    - [How Do We Build?](#how-do-we-build)
+    - [Angular CLI](#angular-cli)
+    - [Questions I have](#questions-i-have)
+
+---
+
 # Angular 2 Getting Started
 
 This course will cover:
@@ -14,7 +121,7 @@ This course will cover:
     - css
     - programming language such as javascript
 
-## why angular?
+## why angular?2
 - expressive html
 - powerful data binding
 - modular by design
@@ -1043,7 +1150,185 @@ NOTE: we do `    RouterModule.forChild([` for each feature module instead of .fo
 - Providers: Lists service providers
 
 # Building, Testing, and Deploying with the CLI
+## What is the Angular CLI?
+- A command line interface for Angular
+- Purpose:
+    - Build an Angular application
+    - Generate Angular files
+    - Execute the application
+    - Run unit and end to end tests
+    - Prepare the application for development
+- `npm install -g @angular/cli`
+- to get help on specific commands:
+```
+$ ng help v
+ng version
+  Outputs Angular CLI version.
+  aliases: v, --version, -v
+```
+`ng new <name of application>`
+- creates a new angular application
+- e2e folder
+    - contains start of end to end test of the application
+- node_modules
+- src
+    - src code for our application
+    - app
+        - this is where we put all our code
+    - assets
+        - images or assets
+    - environments
+        - build environments
+            - one for production, one for testing
+        - cli picks the one to use based on flags we pass in
+    - default favion.ico
+    - index.html
+        - in most cases u never need to modify this file
+    - main.ts
+        - file that bootstraps our application
+        - should never need to modify this
+    - polyfill.ts
+        - supports evergreen and classic browsers
+        - adds code for functions written for modern browsers to work in older browsers
+    - style.css
+        - stylesheet for application wide styles
+    - test.ts
+        - sets up for testing...
+    - tsconfig.app.json
+    - tsconfig.spec.json
+        -  both extend our tsconfig.json file
+        -  one is for application
+        -  spec is for test specifications
+    -  typings.d.ts
+-  karma.conf.js
+    -  karma is a javascript test runner
+    -  used for our unit tests
+-  protractor.conf.js
+    -  protractor is end to end testing framework
+-  tslint.json
+    -  checks our code against code style rules
+    -  this file defines our rules, change depending on team preferences
+-  .angular-cli.json
+    -  defines how cli generates code and works with our files
+    -  prefix is used for our selectors, can define this when creating new app
+        -  `ng new hello-world --prefix hw`
+-  `ng help new` to see flags we can use when generating a new application
+    - --routing (boolean) Generates a routing module.
+- NOTE: you CANNOT generate a new ng app inside of another ng app folder using the cli
 
+`ng serve -o`
+- app is built in watch mode, default port is 4200
+- the o opens default browser, can edit npm start command in package.json for this
+- two commonly used flags:
+    -   --port (Number) (Default: 4200) Port to listen to for serving.
+    aliases: -p <value>, -port <value>
+    -  --open (Boolean) (Default: false) Opens the url in default browser.
+    aliases: -o, -open
+
+`ng g c <component name> [--flat]`
+- flat flag if we dont want extra folder generated for us
+- otherwise the three files will be generated in component_name/ folder
+
+`ng test`
+- builds application, launches browser and executes karma test runner
+- we can see the unit tests
+- angular generates some unit tests for us
+- the test runner runs in watch mode, so we can modify files and the tests will automatically rerun
+
+`ng e2e`
+- to run our end to end tests using protractor
+- NOTE: ng test and ng e2e worked successfully for me in powershell but not working in wsl ubuntu zsh
+
+```
+$ ng build
+Date: 2018-02-03T23:21:06.929Z
+Hash: 7809c86dd2899bcd7f05
+Time: 6111ms
+chunk {inline} inline.bundle.js, inline.bundle.js.map (inline) 5.83 kB [entry] [rendered]
+chunk {main} main.bundle.js, main.bundle.js.map (main) 10.3 kB [initial] [rendered]
+chunk {polyfills} polyfills.bundle.js, polyfills.bundle.js.map (polyfills) 201 kB [initial] [rendered]
+chunk {styles} styles.bundle.js, styles.bundle.js.map (styles) 11.4 kB [initial] [rendered]
+chunk {vendor} vendor.bundle.js, vendor.bundle.js.map (vendor) 2.43 MB [initial] [rendered]
+```
+- in order to deploy our code after testing, need to build it to deploy to server
+- but before we deploy the files in the dist/, we want to minify/uglify code + tree shaking
+    - tree shaking drops dead branches i.e. unused code
+- AOT: Ahead of Time Compiler
+    - compile our templates before deploying
+- cli does this for us if we simply add **--prod flag**
+```
+$ ng build --prod
+Date: 2018-02-03T23:23:46.543Z
+Hash: e0894894145e1ef44b34
+Time: 15636ms
+chunk {0} polyfills.f20484b2fa4642e0dca8.bundle.js (polyfills) 59.4 kB [initial] [rendered]
+chunk {1} main.34c2037568943aee5abc.bundle.js (main) 152 kB [initial] [rendered]
+chunk {2} styles.9c0ad738f18adc3d19ed.bundle.css (styles) 79 bytes [initial] [rendered]
+chunk {3} inline.ef66fc99c35b976a47ae.bundle.js (inline) 1.45 kB [entry] [rendered]
+```
+- the file names have been hashed, this prevents the server from caching files
+- everytime we make changes and re-compile code will have diff file names so server will always download newest files
+- ng help prod for more options
+
+# Angular CLI Review
+- ng help \<command name>
+    - displays commands and flags
+- ng new
+    - creates new angular application
+- ng serve
+    - launches a server
+- ng generate
+    - generates files from blueprint
+- ng test
+    - runs unit tests using karma
+- ng e2e
+    - runs end to end tests using Protractor
+- ng build
+    - compiles into an output directory
+
+## ng generate
+1. class `ng g cl`
+2. component `ng g c`
+3. directive `ng g d`
+4. enum `ng g e`
+5. guard `ng g g`
+6. interface `ng g i`
+7. module `ng g m`
+8. pipe `ng g p`
+9. service `ng g s`
+
+# Review
+## What Is a Component?
+- a view, defined with a template
+- logic, defined with a class
+- metadata, defined with a decorator
+
+### Where Do We Put the Html? (for the user interface)
+- in the metadata using the template property or in a separate file using the templateUrl property
+
+## When Should We Use Data Binding?
+- any time we want to display a component class property in the view
+    - Interpolation: {{ pageTitle}}
+- when we want to control the dom by setting a dom element value in code
+    - Property Binding: <img [src]='product.imageUrl>
+- when we want to respond to user actions
+    - Event Binding: <button (click)='toggleImage()>
+- when we want to display a component class property, and update the property when the user makes a change
+    - Two-Way Binding: <input [(ngModel)]='listFilter'/>
+
+## Why Do We Need a Service?
+- to implement functionality that is independent from any other component
+- to share data and logic across components
+- to encapsulate external interactions such as with data access
+
+## How Do We Build?
+- export a class
+- attach a decorator
+- import what we need
+- put each component directive and pipe in its appropiate angular module
+
+## Angular CLI
+- leverage the ng cli for creating, building, testing, and deploying angular application
 
 ---
 Questions I have
