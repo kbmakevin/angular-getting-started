@@ -1339,3 +1339,4 @@ Questions I have
     - **It converts the string to a number**
 - What is a promise?
 - How is a promise different from an observable?
+- What does subscribing have to do with the returned results of Http request???
